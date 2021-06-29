@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 2.8.9)
+PROJECT(cec17)
+
+include_directories(include)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ./bin)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ./lib)
+
+# ADD_EXECUTABLE(test "./src/test.cc")
+# ADD_EXECUTABLE(testrandom "./src/testrandom.cc")
+ADD_EXECUTABLE(algPropio "./src/algPropio.cc")
+# ADD_EXECUTABLE(testsolis "./src/testsolis.cc")
+ADD_LIBRARY("cec17_test_func" SHARED "./src/cec17_test_func.c" "./src/cec17.c")
+ADD_LIBRARY("unix_timer" SHARED "./src/unix_timer.cc")
+ADD_LIBRARY("utilidades" SHARED "./src/utilidades.cc")
+# TARGET_LINK_LIBRARIES(test "cec17_test_func")
+# TARGET_LINK_LIBRARIES(testrandom "cec17_test_func")
+TARGET_LINK_LIBRARIES(algPropio "cec17_test_func" "utilidades" "unix_timer" )
+# TARGET_LINK_LIBRARIES(testsolis "cec17_test_func")
